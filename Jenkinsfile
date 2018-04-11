@@ -6,12 +6,18 @@ pipeline {
         ant 'Ant 1.10.3'
     }
     stages {
-        stage('checkout source') {
-            checkout scm
+        stage('Initialize') {
+            steps {
+                checkout scm
+            }
         }
-        stage('test') {
-            rc = sh returnStatus: true, script: "ant deployCodeRunLocalTests"
-            if (rc != 0) {error 'tests or deploy is failed'}
+        stage('Build') {
+            steps {
+                rc = sh returnStatus: true, script: "ant deployCodeRunLocalTests"
+                if (rc != 0) {
+                    error 'tests or deploy is failed'
+                }
+            }
         }
     }
 }
