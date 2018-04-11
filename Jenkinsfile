@@ -13,10 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                rc = sh returnStatus: true, script: "ant deployCodeRunLocalTests"
-                if (rc != 0) {
-                    error 'tests or deploy is failed'
-                }
+                sh 'ant deployCodeRunLocalTests'
             }
         }
     }
