@@ -1,6 +1,9 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
 node {
+    tools {
+        ant 'Ant 1.10.3'
+    }
     stage('checkout source') {
         checkout scm
     }
