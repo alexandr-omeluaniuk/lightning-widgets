@@ -1,0 +1,20 @@
+<project name="Continue integration" default="deployCodeRunLocalTests"
+         basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property environment="env"/>
+    <property file="../../configurations/LightningWidgets/build.properties"/>
+
+    <!--taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="../ant-salesforce.jar" />
+        </classpath>
+    </taskdef-->
+
+    <!-- Shows deploying code and running tests only within the org namespace -->
+    <target name="deployCodeRunLocalTests">
+        <sf:deploy username="${sf.username}" password="${sf.password}"
+                   sessionId="${sf.sessionId}" serverurl="${sf.serverurl}"
+                   maxPoll="20" deployRoot="src" rollbackOnError="true"
+                   testlevel="RunLocalTests" checkOnly="true"/>
+    </target>
+</project>
