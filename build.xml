@@ -4,11 +4,11 @@
     <property environment="env"/>
     <property file="../../configurations/LightningWidgets/build.properties"/>
 
-    <!--taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
-            <pathelement location="../ant-salesforce.jar" />
+            <pathelement location="../../tools/ant-salesforce.jar" />
         </classpath>
-    </taskdef-->
+    </taskdef>
 
     <!-- Shows deploying code and running tests only within the org namespace -->
     <target name="deployCodeRunLocalTests">
