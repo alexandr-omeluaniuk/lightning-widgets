@@ -12,8 +12,8 @@ pipeline {
             }
         }
         stage('Deploy on UAT') {
+            echo $BRANCH_NAME
             when {
-                echo $BRANCH_NAME
                 expression { $BRANCH_NAME == 'uat' }
             }
             steps {
@@ -21,8 +21,8 @@ pipeline {
             }
         }
         stage('Run tests on DEV') {
+            echo $BRANCH_NAME
             when {
-                echo $BRANCH_NAME
                 expression { $BRANCH_NAME == 'dev' }
             }
             steps {
