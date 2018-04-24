@@ -11,9 +11,20 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
+        stage('Deploy on UAT') {
+            when {
+                expression { env.BRANCH_NAME == 'uat' }
+            }
             steps {
-                sh 'ant deployCodeRunLocalTests'
+                sh 'ant uatDeployCodeRunLocalTests'
+            }
+        }
+        stage('Run tests on DEV') {
+            when {
+                expression { env.BRANCH_NAME == 'dev' }
+            }
+            steps {
+                sh 'ant uatDeployCodeRunLocalTests'
             }
         }
     }

@@ -4,32 +4,22 @@
     <property environment="env"/>
     <property file="../../configurations/LightningWidgets/build.properties"/>
 
-    <condition property="sf.username" value="">
-        <not>
-            <isset property="sf.username"/>
-        </not>
-    </condition>
-    <condition property="sf.password" value="">
-        <not>
-            <isset property="sf.password"/>
-        </not>
-    </condition>
-    <condition property="sf.sessionId" value="">
-        <not>
-            <isset property="sf.sessionId"/>
-        </not>
-    </condition>
-
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
             <pathelement location="../../tools/ant-salesforce.jar" />
         </classpath>
     </taskdef>
 
-    <!-- Shows deploying code and running tests only within the org namespace -->
-    <target name="deployCodeRunLocalTests">
-        <sf:deploy username="${sf.username}" password="${sf.password}"
-                   sessionId="${sf.sessionId}" serverurl="${sf.serverurl}"
+    <!-- ===================================== TASKS =========================================== -->
+    <target name="uatDeployCodeRunLocalTests">
+        <sf:deploy username="${uat.sf.username}" password="${uat.sf.password}"
+                   sessionId="" serverurl="${uat.sf.serverurl}"
+                   maxPoll="20" deployRoot="src" rollbackOnError="true"
+                   testlevel="RunLocalTests"/>
+    </target>
+    <target name="devRunTests">
+        <sf:deploy username="${dev.sf.username}" password="${dev.sf.password}"
+                   sessionId="" serverurl="${dev.sf.serverurl}"
                    maxPoll="20" deployRoot="src" rollbackOnError="true"
                    testlevel="RunLocalTests" checkOnly="true"/>
     </target>
