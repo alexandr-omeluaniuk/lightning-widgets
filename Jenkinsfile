@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy on UAT') {
             when {
-                branch 'uat'
+                branch 'origin/uat'
             }
             steps {
                 sh 'ant uatDeployCodeRunLocalTests'
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Run tests on DEV') {
             when {
-                branch 'dev'
+                branch 'origin/dev'
             }
             steps {
                 sh 'ant uatDeployCodeRunLocalTests'
