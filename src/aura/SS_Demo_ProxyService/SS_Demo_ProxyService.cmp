@@ -1,0 +1,39 @@
+<!--
+ - Created by ss on 24/04/18.
+ -->
+
+<aura:component description="SS_Demo_ProxyService">
+    <!-- ============================== ATTRIBUTE ======================================= -->
+    <aura:attribute access="private" name="message" type="String" default="Hello world!"
+                    description="toast message"/>
+    <!-- ============================== LAYOUT ========================================== -->
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12"
+                              largeDeviceSize="12" padding="around-small">
+            <h1>Proxy Service</h1>
+            <p>
+                Proxy Service is a wrapper for all outbound requests to server.
+                It allows you to process all server errors in one place, and reduces the amount
+                of code in 'helper'. For this, inject ProxyService component into your custom
+                component and perform all requests through ProxyService.request method.
+                Also ProxyService component includes toast-methods that allow show toast.
+            </p>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12"
+                              largeDeviceSize="12" padding="around-small">
+            <lightning:input label="Message" value="{!v.message}" type="text"/>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12"
+                              largeDeviceSize="12" padding="around-small">
+            <lightning:button onclick="{!c.showToastSuccess}"
+                              label="Show success toast" variant="success"/>
+            <lightning:button onclick="{!c.showToastWarning}"
+                              label="Show warning toast" variant="neutral"/>
+            <lightning:button onclick="{!c.showToastError}"
+                              label="Show error toast" variant="destructive"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+    <c:SS_ProxyService aura:id="proxy-service" />
+</aura:component>

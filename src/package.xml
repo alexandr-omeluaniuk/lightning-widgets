@@ -1,21 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-  <types>
-    <name>AuraDefinitionBundle</name>
-    <members>SS_Application</members>
-    <members>SS_Demo</members>
-    <members>SS_Demo_Map</members>
-    <members>SS_Demo_Modal</members>
-    <members>SS_Map</members>
-    <members>SS_Map_Event</members>
-    <members>SS_Map_Leaflet</members>
-    <members>SS_Modal</members>
-    <members>defaultTokens</members>
-    <members>map</members>
-  </types>
-  <types>
-    <name>StaticResource</name>
-    <members>Leaflet</members>
-  </types>
-  <version>42.0</version>
+    <types>
+        <members>SS_Application</members>
+        <members>SS_Demo</members>
+        <members>SS_Demo_Map</members>
+        <members>SS_Demo_Modal</members>
+        <members>SS_Map</members>
+        <members>SS_Map_Event</members>
+        <members>SS_Map_Leaflet</members>
+        <members>SS_Modal</members>
+        <members>defaultTokens</members>
+        <members>map</members>
+        <members>SS_ProxyService</members>
+        <members>SS_Demo_ProxyService</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Leaflet</members>
+        <name>StaticResource</name>
+    </types>
+    <version>42.0</version>
 </Package>
