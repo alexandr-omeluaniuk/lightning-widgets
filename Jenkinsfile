@@ -8,13 +8,12 @@ pipeline {
     stages {
         stage('Initialize') {
             steps {
-                echo ${env.BRANCH_NAME}
                 checkout scm
             }
         }
         stage('Deploy on UAT') {
             when {
-                expression { env.BRANCH_NAME == 'origin/uat' }
+                branch 'uat'
             }
             steps {
                 sh 'ant uatDeployCodeRunLocalTests'
@@ -22,7 +21,7 @@ pipeline {
         }
         stage('Run tests on DEV') {
             when {
-                expression { env.BRANCH_NAME == 'origin/dev' }
+                branch 'dev'
             }
             steps {
                 sh 'ant uatDeployCodeRunLocalTests'
