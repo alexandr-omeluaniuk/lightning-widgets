@@ -6,33 +6,25 @@ pipeline {
         ant 'Ant 1.10.3'
     }
     stages {
-        when {
-            branch 'uat'
-        }
-        stage('Initialize UAT') {
+        stage('Initialize') {
             steps {
                 checkout scm
             }
         }
         stage('Deploy on UAT') {
+            when {
+                branch 'uat'
+            }
             steps {
                 sh 'ant uatDeployCodeRunLocalTests'
             }
         }
-
-    }
-    stages {
-        when {
-            branch 'dev'
-        }
-        stage('Initialize DEV') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Run tests on DEV') {
+            when {
+                branch 'dev'
+            }
             steps {
-                sh 'ant devRunTests'
+                sh 'ant uatDeployCodeRunLocalTests'
             }
         }
     }
