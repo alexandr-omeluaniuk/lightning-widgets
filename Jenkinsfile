@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Initialize') {
             steps {
+                echo ${env.BRANCH_NAME}
                 checkout scm
             }
         }
