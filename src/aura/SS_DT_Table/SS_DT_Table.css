@@ -1,0 +1,31 @@
+/**
+ * Created by ss on 31/07/18.
+ */
+.THIS .empty-label {
+    color: lightgrey;
+}
+.THIS .table-container {
+    display:block;
+    overflow-x:auto;
+}
+.THIS .footer-btn-bar {
+    display: flex;
+    justify-content: flex-start;
+}
+.THIS .footer-btn-bar-phone {
+    display: flex;
+    justify-content: center;
+}
+.THIS .footer-info-bar {
+    padding-top: 7px;
+    display: flex;
+    justify-content: flex-end;
+}
+.THIS .footer-info-bar-phone {
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+}
+.THIS .dt-sort-icon {
+    float: right;
+}

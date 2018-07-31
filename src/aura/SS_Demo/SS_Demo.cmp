@@ -3,9 +3,9 @@
  -->
 
 <aura:component description="Widgets demo"
-                implements="flexipage:availableForAllPageTypes, forceCommunity:availableForAllPageTypes">
+                implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes">
     <!-- ============================== ATTRIBUTE ======================================= -->
-    <aura:attribute name="currentWidget" type="String" default="c:SS_Demo_Map"
+    <aura:attribute name="currentWidget" type="String" default="c:SS_Demo_DataTable"
                     description="widget, selected by default"/>
     <aura:attribute name="widgets" type="Object[]" default="[]"
                     description="available widgets"/>

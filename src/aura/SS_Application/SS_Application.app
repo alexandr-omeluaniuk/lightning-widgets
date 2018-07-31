@@ -3,5 +3,5 @@
  -->
 
 <aura:application description="SS_Application" extends="force:slds" tokens="c:map">
-    <c:SS_Demo />
+    <c:SS_Demo_DataTable />
 </aura:application>

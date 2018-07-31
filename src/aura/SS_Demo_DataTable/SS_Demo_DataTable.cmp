@@ -1,0 +1,28 @@
+<!--
+ - Created by ss on 25/04/18.
+ -->
+
+<aura:component description="SS_Demo_DataTable">
+    <div style="height: 20px;"></div>
+    <c:SS_DT_Table title="Accounts" iconName="standard:account"
+                   sObjectType="Account"
+                   emptyLabel=""
+                   pageSize="10" columns="[{
+                                                label: 'Name',
+                                                field: 'Name',
+                                                isLink: true
+                                            }, {
+                                                label: 'Description',
+                                                field: 'Description',
+                                                width: '300px',
+                                                nonsortable: true
+                                            }, {
+                                                label: 'Industry',
+                                                field: 'Industry'
+                                            }, {
+                                                label: 'Phone',
+                                                field: 'Phone',
+                                                align: 'right',
+                                                headIcon: 'utility:dialing'
+                                            }]"/>
+</aura:component>

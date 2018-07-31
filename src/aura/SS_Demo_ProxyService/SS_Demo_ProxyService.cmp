@@ -3,10 +3,10 @@
  -->
 
 <aura:component description="SS_Demo_ProxyService">
-    <!-- ============================== ATTRIBUTE ======================================= -->
+    <!-- ============================== ATTRIBUTES ============================================= -->
     <aura:attribute access="private" name="message" type="String" default="Hello world!"
                     description="toast message"/>
-    <!-- ============================== LAYOUT ========================================== -->
+    <!-- ============================== LAYOUT ================================================= -->
     <lightning:layout multipleRows="true">
         <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12"
                               largeDeviceSize="12" padding="around-small">

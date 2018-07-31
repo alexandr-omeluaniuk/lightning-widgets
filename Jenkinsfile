@@ -24,7 +24,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                sh 'ant uatDeployCodeRunLocalTests'
+                sh 'ant devRunTests'
             }
         }
     }
