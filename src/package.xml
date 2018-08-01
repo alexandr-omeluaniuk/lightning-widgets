@@ -9,7 +9,6 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>SS_Application</members>
         <members>SS_DT_Ev_LoadData</members>
         <members>SS_DT_Table</members>
         <members>SS_DT_TableHead</members>
@@ -18,12 +17,10 @@
         <members>SS_Demo_DataTable</members>
         <members>SS_Demo_Map</members>
         <members>SS_Demo_Modal</members>
-        <members>SS_Demo_ProxyService</members>
         <members>SS_Map</members>
         <members>SS_Map_Event</members>
         <members>SS_Map_Leaflet</members>
         <members>SS_Modal</members>
-        <members>SS_ProxyService</members>
         <members>SS_U_Proxy</members>
         <members>defaultTokens</members>
         <name>AuraDefinitionBundle</name>
