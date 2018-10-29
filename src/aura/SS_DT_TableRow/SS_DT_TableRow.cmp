@@ -1,0 +1,54 @@
+<!--
+ - Created by ss on 31/07/18.
+ -->
+
+<aura:component description="SS_DT_TableRow">
+    <!-- =========================== ATTRIBUTES =============================================== -->
+    <aura:attribute access="public" name="row" type="Object" required="true"/>
+    <aura:attribute access="public" name="emptyLabel" type="String"
+                    description="Label for empty cells"/>
+    <!-- =========================== LAYOUT =================================================== -->
+    <tr>
+        <aura:iteration items="{!v.row.content}" var="column">
+            <td data-label="{!column.label}" style="{!
+            (column.settings.width ? 'width: ' + column.settings.width + ';' : '')
+            + (column.settings.width ? 'max-width: ' + column.settings.width + ';' : '')
+            + (column.settings.align ? 'text-align: ' + column.settings.align : '')
+            }" class="dt-column">
+                <div class="slds-truncate" title="{!column.label}">
+                    <aura:if isTrue="{!column.value}">
+                        <aura:if isTrue="{!column.settings.type == 'currency'}">
+                            <lightning:formattedNumber value="{!column.value}"
+                                                       style="currency"
+                                                       currencyCode="{!column.settings.currencyCode ? column.settings.currencyCode : 'USD'}"
+                                                       currencyDisplayAs="symbol"/>
+                        </aura:if>
+                        <aura:if isTrue="{!column.settings.type == 'date'}">
+                            <lightning:formattedDateTime value="{!column.value}"
+                                                         year="numeric" day="numeric"
+                                                         month="long"/>
+                        </aura:if>
+                        <aura:if isTrue="{!column.settings.type == 'datetime'}">
+                            <lightning:formattedDateTime value="{!column.value}"
+                                                         year="numeric" hour="numeric"
+                                                         month="long" minute="numeric"
+                                                         day="numeric"
+                                                         weekday="long"/>
+                        </aura:if>
+                        <aura:if isTrue="{!!column.settings.type}">
+                            <aura:if isTrue="{!column.settings.isLink}">
+                                <a onclick="{!c.openLink}">{!column.value}</a>
+                            </aura:if>
+                            <aura:if isTrue="{!!column.settings.isLink}">
+                                {!column.value}
+                            </aura:if>
+                        </aura:if>
+                    </aura:if>
+                    <aura:if isTrue="{!!column.value}">
+                        <span class="empty-label">{!v.emptyLabel}</span>
+                    </aura:if>
+                </div>
+            </td>
+        </aura:iteration>
+    </tr>
+</aura:component>

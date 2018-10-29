@@ -16,7 +16,7 @@
     <lightning:layout multipleRows="true" class="container">
         <!-- FORM -->
         <lightning:layoutItem size="12" largeDeviceSize="4" mediumDeviceSize="4" smallDeviceSize="12" class="form">
-            <lightning:layout>
+            <lightning:layout >
                 <lightning:layoutItem size="12">
                     <div aria-labelledby="mapform">
                         <fieldset class="slds-form-element">

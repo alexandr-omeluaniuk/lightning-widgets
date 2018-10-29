@@ -1,0 +1,17 @@
+<!--
+ - Created by ss on 31/07/18.
+ -->
+
+<aura:component description="SS_U_Proxy" abstract="true" extensible="true">
+    <!-- ========================== ATTRIBUTES ================================================ -->
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    <!-- ========================== METHODS =================================================== -->
+
+    <!-- ========================== LAYOUT ==================================================== -->
+    <aura:set attribute="body">
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner variant="brand" size="medium" alternativeText="Please wait..."/>
+        </aura:if>
+        <div>{!v.body}</div>
+    </aura:set>
+</aura:component>

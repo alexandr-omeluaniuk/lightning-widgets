@@ -1,0 +1,87 @@
+<!--
+ - Created by ss on 31/07/18.
+ -->
+
+<aura:component description="SS_DT_Table" controller="SS_DT_Aura_Table"
+                extends="c:SS_U_Proxy">
+    <!-- =========================== ATTRIBUTES =============================================== -->
+    <aura:attribute access="public" name="title" type="String" required="true"
+                    description="Table title"/>
+    <aura:attribute access="public" name="iconName" type="String" required="true"
+                    description="Table icon name" default="[]"/>
+    <aura:attribute access="public" name="columns" type="Object[]" required="true"
+                    description="Table columns" default="[]"/>
+    <aura:attribute access="public" name="sObjectType" type="String" required="true"
+                    description="SObject type"/>
+    <aura:attribute access="public" name="pageSize" type="Integer" required="true"
+                    description="Page records count"/>
+    <aura:attribute access="public" name="customizationClassName" type="String"
+                    description="Class name provide query customization,
+                            see DC_Comp_ListViewCustomization"/>
+    <aura:attribute access="public" name="emptyLabel" type="String" default="empty"
+                    description="Label for empty cells"/>
+
+    <aura:attribute access="private" name="pageNumber" type="Integer" default="1"
+                    description="Page number"/>
+    <aura:attribute access="private" name="data" type="Object[]" default="[]"
+                    description="Table data"/>
+    <aura:attribute access="private" name="totalPages" type="Integer" default="0"
+                    description="Total pages"/>
+    <aura:attribute access="private" name="totalRecords" type="Integer" default="0"
+                    description="Total records"/>
+    <!-- ======================================== EVENTS ====================================== -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="sortData" event="c:SS_DT_Ev_LoadData" action="{!c.init}" />
+    <!-- =========================== LAYOUT =================================================== -->
+    <lightning:card title="{!v.title + ' (' + v.totalRecords + ')'}" iconName="{!v.iconName}">
+        <aura:set attribute="actions">
+
+        </aura:set>
+
+        <aura:set attribute="body">
+            <div class="table-container">
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                    <aura:iteration items="{!v.columns}" var="column">
+                        <c:SS_DT_TableHead column="{!column}" columns="{!v.columns}"/>
+                    </aura:iteration>
+                    </thead>
+                    <tbody>
+                    <aura:iteration items="{!v.data}" var="row">
+                        <c:SS_DT_TableRow row="{!row}" emptyLabel="{!v.emptyLabel}" />
+                    </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </aura:set>
+
+        <aura:set attribute="footer">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" class="{!$Browser.isPhone ? 'footer-btn-bar-phone' : 'footer-btn-bar'}"
+                                      smallDeviceSize="12"
+                                      mediumDeviceSize="6"
+                                      largeDeviceSize="6">
+                    <lightning:buttonIcon iconName="utility:left" variant="border-filled"
+                                          alternativeText="First" disabled="{!v.pageNumber == 1}"
+                                          onclick="{!c.jumpToFirstPage}"/>
+                    <lightning:buttonIcon iconName="utility:chevronleft" variant="border-filled"
+                                          alternativeText="Previuos" onclick="{!c.previousPage}"
+                                          disabled="{!v.pageNumber == 1}"/>
+                    <lightning:buttonIcon iconName="utility:chevronright" variant="border-filled"
+                                          alternativeText="Next" onclick="{!c.nextPage}"
+                                          disabled="{!v.pageNumber >= v.totalPages}"/>
+                    <lightning:buttonIcon iconName="utility:right" variant="border-filled"
+                                          alternativeText="Last" onclick="{!c.jumpToLastPage}"
+                                          disabled="{!v.pageNumber >= v.totalPages}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12" class="{!$Browser.isPhone ? 'footer-info-bar-phone' : 'footer-info-bar'}"
+                                      smallDeviceSize="12"
+                                      mediumDeviceSize="6"
+                                      largeDeviceSize="6">
+                    <lightning:badge label="{!'Current page: ' + v.pageNumber}"/>
+                    <lightning:badge label="{!'Total pages: ' + v.totalPages}"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:set>
+    </lightning:card>
+</aura:component>

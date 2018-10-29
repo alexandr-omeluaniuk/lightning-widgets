@@ -1,0 +1,39 @@
+<!--
+ - Created by ss on 31/07/18.
+ -->
+
+<aura:component description="SS_DT_TableHead">
+    <!-- =========================== ATTRIBUTES =============================================== -->
+    <aura:attribute access="public" name="column" type="Object" required="true"/>
+    <aura:attribute access="public" name="columns" type="Object[]" required="true"/>
+    <!-- =========================== EVENTS =================================================== -->
+    <aura:registerEvent name="sortData" type="c:SS_DT_Ev_LoadData"/>
+    <!-- =========================== LAYOUT =================================================== -->
+    <th scope="col" class="slds-text-title_caps dt-th">
+        <lightning:layout >
+            <lightning:layoutItem size="10">
+                <div class="slds-truncate" title="{!v.column.label}" >
+                    <aura:if isTrue="{!v.column.headIcon}">
+                        <lightning:icon iconName="{!v.column.headIcon}" class="dt-head-icon"
+                                        alternativeText="" size="xx-small"/>
+                    </aura:if>
+                    {!v.column.label}
+                    <aura:if isTrue="{!v.column.sort}">
+                        <lightning:icon iconName="{!v.column.sort == 'ASC' ? 'utility:arrowup' : 'utility:arrowdown'}"
+                                        alternativeText="" size="xx-small" class="dt-sort-sign"/>
+                    </aura:if>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2" class="dt-head-btn-bar">
+                <aura:if isTrue="{!!v.column.nonsortable}">
+                <lightning:buttonMenu iconSize="x-small" menuAlignment="right"
+                                      onselect="{!c.handleSelect}"
+                                      alternativeText="Show menu">
+                    <lightning:menuItem value="ASC" label="Sort Up" iconName="utility:arrowup"/>
+                    <lightning:menuItem value="DESC" label="Sort Down" iconName="utility:arrowdown"/>
+                </lightning:buttonMenu>
+                </aura:if>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </th>
+</aura:component>

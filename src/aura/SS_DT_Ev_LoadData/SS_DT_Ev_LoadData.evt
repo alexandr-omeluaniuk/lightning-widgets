@@ -1,0 +1,6 @@
+<!--
+ - Created by ss on 31/07/18.
+ -->
+
+<aura:event type="COMPONENT" description="SS_DT_Ev_LoadData">
+</aura:event>

@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy on UAT') {
             when {
-                expression { env.BRANCH_NAME == 'uat' }
+                branch 'uat'
             }
             steps {
                 sh 'ant uatDeployCodeRunLocalTests'
@@ -21,10 +21,10 @@ pipeline {
         }
         stage('Run tests on DEV') {
             when {
-                expression { env.BRANCH_NAME == 'dev' }
+                branch 'dev'
             }
             steps {
-                sh 'ant uatDeployCodeRunLocalTests'
+                sh 'ant devRunTests'
             }
         }
     }
